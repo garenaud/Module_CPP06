@@ -4,13 +4,28 @@ ScalarConverter::ScalarConverter() {}
 
 void ScalarConverter::convert(const std::string& literal) 
 {
-    std::istringstream iss(literal);
     double value;
 
-    if (!(iss >> value)) 
+    if (literal == "-inff" || literal == "-inf") 
     {
-        std::cout << "Invalid literal" << std::endl;
-        return;
+        value = -std::numeric_limits<float>::infinity();
+    }
+    else if (literal == "+inff" || literal == "+inf") 
+    {
+        value = std::numeric_limits<float>::infinity();
+    }
+    else if (literal == "nanf" || literal == "nan") 
+    {
+        value = std::numeric_limits<float>::quiet_NaN();
+    }
+    else 
+    {
+        std::istringstream iss(literal);
+        if (!(iss >> value)) 
+        {
+            std::cout << "Invalid literal" << std::endl;
+            return;
+        }
     }
 
     toChar(value);
