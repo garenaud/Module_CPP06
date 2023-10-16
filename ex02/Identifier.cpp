@@ -18,14 +18,14 @@ void Identifier::identify(Base* p) {
 
 void Identifier::identify(Base& p) {
     try {
-        static_cast<void>(dynamic_cast<A&>(p));
-        std::cout << "A\n";
-    } catch (...) {
-        try {
-            static_cast<void>(dynamic_cast<B&>(p));
+        if (dynamic_cast<A*>(&p) != nullptr) {
+            std::cout << "A\n";
+        } else if (dynamic_cast<B*>(&p) != nullptr) {
             std::cout << "B\n";
-        } catch (...) {
+        } else if (dynamic_cast<C*>(&p) != nullptr) {
             std::cout << "C\n";
         }
+    } catch (...) {
+        std::cout << "Unknown Type\n"; // Gestion de l'échec du cast
     }
 }
