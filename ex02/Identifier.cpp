@@ -11,9 +11,9 @@ Base* Identifier::generate() {
 }
 
 void Identifier::identify(Base* p) {
-    if (dynamic_cast<A*>(p)) std::cout << "A\n";
-    else if (dynamic_cast<B*>(p)) std::cout << "B\n";
-    else if (dynamic_cast<C*>(p)) std::cout << "C\n";
+    if (dynamic_cast<A*>(p) != nullptr) std::cout << "A\n";
+    else if (dynamic_cast<B*>(p) != nullptr) std::cout << "B\n";
+    else if (dynamic_cast<C*>(p) != nullptr) std::cout << "C\n";
 }
 
 void Identifier::identify(Base& p) {
