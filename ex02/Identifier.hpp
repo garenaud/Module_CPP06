@@ -6,6 +6,8 @@
 class Identifier {
 private:
     Identifier() {}  // Constructeur privé
+    Identifier(const Identifier& other);
+    Identifier& operator=(const Identifier& other);
 public:
     static Base* generate();
     static void identify(Base* p);
