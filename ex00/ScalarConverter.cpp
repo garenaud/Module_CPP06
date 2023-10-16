@@ -2,6 +2,20 @@
 
 ScalarConverter::ScalarConverter() {}
 
+ScalarConverter::ScalarConverter(const ScalarConverter& other) 
+{
+    *this = other;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) 
+{
+    if (this != &other) 
+    {
+        *this = other;
+    }
+    return *this;
+}
+
 void ScalarConverter::convert(const std::string& literal) 
 {
     double value;
@@ -80,11 +94,11 @@ void ScalarConverter::toFloat(double value)
     else 
     {
         float f = static_cast<float>(value);
-        std::cout << "float: " << f << "f" << std::endl;
+        std::cout << "float: " << std::fixed << f << "f" << std::endl;
     }
 }
 
 void ScalarConverter::toDouble(double value) 
 {
-    std::cout << "double: " << value << std::endl;
+    std::cout << "double: " << std::fixed << value << std::endl;
 }

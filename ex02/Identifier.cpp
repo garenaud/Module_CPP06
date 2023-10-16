@@ -18,11 +18,11 @@ void Identifier::identify(Base* p) {
 
 void Identifier::identify(Base& p) {
     try {
-        dynamic_cast<A&>(p);
+        static_cast<void>(dynamic_cast<A&>(p));
         std::cout << "A\n";
     } catch (...) {
         try {
-            dynamic_cast<B&>(p);
+            static_cast<void>(dynamic_cast<B&>(p));
             std::cout << "B\n";
         } catch (...) {
             std::cout << "C\n";
